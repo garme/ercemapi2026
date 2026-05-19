@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamada de Minicursos - XIV ERCEMAPI 2026</title>
+    <style>
+        :root { 
+            --primary-color: #1a1a2e; 
+            --secondary-color: #16213e; 
+            --accent-color: #0f3460; 
+            --highlight: #e94560; 
+            --text-light: #f5f5f5; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        .page-header { 
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-bottom: 5px solid var(--highlight);
+        }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
+        
+        /* Classe responsável pelas margens */
+        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; text-align: justify; }
+        
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--highlight); padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1.5rem; }
+        ul.regras { list-style-type: square; margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
+        ul.regras li { margin-bottom: 0.8rem; }
+        .highlight-box { background-color: #e3f2fd; border-left: 4px solid #1e88e5; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; text-align: left;}
+        .tabela-datas { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 3rem;}
+        .tabela-datas th, .tabela-datas td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .tabela-datas th { background-color: var(--primary-color); color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="page-header">
+        <h1>Chamada de Minicursos</h1>
+        <p>Propostas de Cursos Práticos e Publicação de Capítulos</p>
+    </div>
+
+    <div class="container">
+        <h2>Submissão de Propostas (Resumos)</h2>
+        <p>Convidamos investigadores, professores e profissionais a submeterem propostas de minicursos abordando os temas centrais da chamada de 2026. A avaliação das propostas baseia-se na submissão de um resumo estendido:</p>
+        <br>
+        <ul class="regras">
+            <li>Os resumos deverão ter <strong>no máximo 5 páginas</strong>, incluindo referências.</li>
+            <li>Os resumos utilizarão o template de publicações de artigos da SBC.</li>
+            <li>No resumo <strong>não deverá constar</strong> nenhum tipo de identificação dos autores (<em>Double Blind-Review</em>). Omissão desta regra gera rejeição imediata.</li>
+            <li>O texto deve especificar a estrutura em seções: relevância da proposta, conteúdo programático, metodologia do minicurso (especificando as dinâmicas práticas) e a bibliografia.</li>
+            <li>O envio é feito exclusivamente no formato PDF pelo sistema JEMS.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>Publicação do Capítulo Final:</strong> Os autores das propostas aprovadas deverão ministrar o minicurso durante o evento. Além disso, comprometer-se-ão a submeter o texto final do capítulo (com até 25 páginas), que será publicado em livro oficial da SBC com ISBN (SBC Open Lib).
+        </div>
+
+        <h2>Datas Importantes</h2>
+        <table class="tabela-datas">
+            <tr>
+                <th>Atividade</th>
+                <th>Prazo (Deadline)</th>
+            </tr>
+            <tr>
+                <td>Submissão do Resumo do Minicurso</td>
+                <td>12 de agosto de 2026</td>
+            </tr>
+            <tr>
+                <td>Notificação de Aceitação</td>
+                <td>02 de setembro de 2026</td>
+            </tr>
+            <tr>
+                <td>Envio da Versão Final (Capítulo 25 pág.) e Inscrição</td>
+                <td>21 de outubro de 2026</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>

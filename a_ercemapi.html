@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A ERCEMAPI - XIV ERCEMAPI 2026</title>
+    <style>
+        :root { 
+            --primary-color: #1a1a2e; 
+            --secondary-color: #16213e; 
+            --accent-color: #0f3460; 
+            --highlight: #e94560; 
+            --text-light: #f5f5f5; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        .page-header { 
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-bottom: 5px solid var(--highlight);
+        }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
+        
+        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; }
+        
+        .history-section { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .history-section p { text-align: justify; margin-bottom: 1.5rem; font-size: 1.1rem; color: #444; }
+        .history-section p:last-child { margin-bottom: 0; }
+        
+        /* Destaque para a edição atual */
+        .edicao-atual { 
+            background-color: #ffe8ec; 
+            border-left: 4px solid var(--highlight); 
+            padding: 1.5rem; 
+            margin-top: 2rem;
+            border-radius: 0 8px 8px 0;
+        }
+        .edicao-atual p { color: #1a1a2e; font-weight: 500; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="page-header">
+        <h1>Sobre a ERCEMAPI</h1>
+        <p>Histórico e Evolução da Escola Regional de Computação</p>
+    </div>
+
+    <div class="container">
+        <div class="history-section">
+            <p>A Escola Regional de Computação Ceará, Maranhão e Piauí (ERCEMAPI 2026) é um evento científico itinerante promovido pela Sociedade Brasileira de Computação (SBC), realizado alternadamente pelas secretarias regionais nos estados do Ceará, do Maranhão e do Piauí.</p>
+            
+            <p>A primeira edição da Escola Regional de Computação dos Estados do Ceará, Maranhão e Piauí (ERCEMAPI) ocorreu em 2007 e foi sediada em Fortaleza-CE. A segunda edição da ERCEMAPI foi realizada na cidade de São Luís-MA. Em 2009, foi realizada a terceira edição da ERCEMAPI na cidade de Parnaíba-PI. Em 2010, a ERCEMAPI foi realizada na cidade de Sobral-CE. O evento recebeu 258 participantes de diversas IES do país e mais 55 estudantes de ensino médio, complementando a plateia dos 41 trabalhos apresentados na ERCEMAPI 2010. Em 2011, a ERCEMAPI foi realizada pela UFPI, em parceria com o IFPI, no estado do Piauí. Foram convidados professores e pesquisadores de diversas instituições do país, entre eles: UFRGS, UFSC, UnB, UFRN, UERN, UFBA, UFMA, UNIVALI, UFCG, UNICAMP, IFPI e da própria UFPI.</p>
+            
+            <p>No ano de 2012, a VI Escola Regional de Computação dos Estados do Ceará, Maranhão e Piauí, ocorreu em São Luís do Maranhão em conjunto com a IV Jornada de Informática do Maranhão (JIM 2012). Os palestrantes convidados abordaram temas de Interação Humano-Computador (Profa. Dra. Raquel Prates – UFMG) e de Imagens Térmicas e seus usos na Biomédica (Profa. Dra. Aura Conci – UFF). Retornando em 2019, a VII Escola Regional de Computação Ceará, Maranhão, Piauí (ERCEMAPI 2019) foi sediada no Centro de Ciências Exatas da Universidade Federal do Maranhão (UFMA). Estiveram presentes estudantes e/ou professores do Maranhão, Piauí, Ceará, Tocantins, Paraíba, Rio de Janeiro e Rio Grande do Norte. Em 2020, a escola foi organizada pela comunidade do Piauí, na forma de conferência virtual devido à pandemia. Pesquisa e Empreendedorismo foram temas centrais da edição. A ERCEMAPI 2021 foi realizada, novamente em formato online, pela UFC em Quixadá-CE. Em 2022, o evento foi organizado pelo Instituto Federal do Maranhão (IFMA), Universidade Estadual do Maranhão (UEMA), Universidade Federal do Maranhão (UFMA) e pelo Centro Universitário UNDB.</p>
+            
+            <p>Em 2023, a ERCEMAPI foi sediada em Aracati-CE, organizada pelo IFCE campi Aracati e Crato, e realizada em formato híbrido, com a participação de mais de 300 conferencistas, sendo o maior percentual de estudantes. No ano de 2024, o evento, que foi novamente realizado em formato híbrido, teve como sede a cidade de Parnaíba-PI e como tema “Indústria 5.0 e o Futuro do Trabalho”. Em 2025, organizado pela UEMA, UFMA, UESPI, IFCE, UFC e IFPI, o evento foi realizado na Universidade Estadual do Maranhão (UEMA) em São Luís-MA.</p>
+            
+            <div class="edicao-atual">
+                <p>Ao retornar ao Ceará, o evento está sendo organizado pelo IFCE campus Crato, por meio do Secretário Regional Adjunto da SBC, Prof. Guilherme Álvaro Rodrigues Maia Esmeraldo, e pela UFC, por meio da Secretária Regional, Profa. Atslands Rego da Rocha. A ERCEMAPI 2026 será sediada pelo IFCE campus Crato e terá como temática central "As IAs Generativas: Redefinindo as Fronteiras entre a Computação e a Sociedade". A Inteligência Artificial Generativa consolidou a computação como o motor central da transformação da sociedade, reescrevendo as práticas de setores fundamentais como a Saúde, Educação, Direito, Artes e Indústria. Discutir esse "Paradigma Generativo" na ERCEMAPI 2026 cria um ecossistema multidisciplinar essencial para debatermos a soberania tecnológica regional. Ao centralizar essa discussão no Cariri, os congressistas são desafiados a refletir sobre a necessidade de adaptar, auditar e desenvolver modelos de IA que respeitem as realidades e demandas do Nordeste, reduzindo os biases inerentes às ferramentas importadas mundialmente.</p>
+            </div>
+            
+            <p style="margin-top: 1.5rem;">Sob a ótica do impacto social, o avanço do paradigma generativo transcende os laboratórios de computação e passa a ditar a inovação em múltiplas áreas do saber. Trazer esse debate para o Cariri é estratégico para todo o estado do Ceará, pois interioriza a discussão de fronteira e capacita o ecossistema local a não ser mero consumidor de tecnologia. Ao dominar as fundações que sustentam a IA, desde a infraestrutura de base até as aplicações finais, a região consolida-se como um polo gerador de soluções tecnológicas próprias, capaz de impulsionar o desenvolvimento socioeconômico regional de forma inclusiva e multidisciplinar.</p>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>

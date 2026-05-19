@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XIV ERCEMAPI 2026 - Ceará, Maranhão e Piauí</title>
+    <style>
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight: #e94560;
+            --text-light: #f5f5f5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        /* Navegação */
+        header { background-color: var(--primary-color); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+        header .logo { color: var(--text-light); font-size: 1.5rem; font-weight: bold; }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: var(--highlight); }
+        
+        /* Secção Destaque (Hero) */
+        .hero { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color)); color: var(--text-light); padding: 6rem 5%; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; color: #ccc; }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; font-weight: bold; }
+        .btn { background-color: var(--highlight); color: var(--text-light); padding: 0.8rem 2rem; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s; }
+        .btn:hover { background-color: #d13d56; }
+        
+        /* Secções de Conteúdo */
+        section { padding: 4rem 5%; }
+        .section-title { text-align: center; font-size: 2rem; color: var(--primary-color); margin-bottom: 2rem; text-transform: uppercase; }
+        .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid var(--highlight); }
+        .card h3 { color: var(--accent-color); margin-bottom: 1rem; }
+        
+        /* Rodapé */
+        footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 2rem; }
+        .realizacao { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                // Acende o link específico
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Mantém a categoria pai acesa se estiver em um submenu
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="hero">
+        <h1>XIV Escola Regional de Computação<br>Ceará, Maranhão e Piauí</h1>
+        <h2>As IAs Generativas: Redefinindo as Fronteiras entre a Computação e a Sociedade</h2>
+        <p>11 a 13 de Novembro de 2026 | IFCE Campus Crato - Ceará</p>
+        <a href="#inscricoes" class="btn">Garantir Inscrição</a>
+    </div>
+
+    <section id="sobre">
+        <h2 class="section-title">Sobre o Evento</h2>
+        <div style="max-width: 800px; margin: auto; text-align: justify;">
+            <p>A XIV Escola Regional de Computação Ceará, Maranhão e Piauí (ERCEMAPI 2026) é um evento científico itinerante promovido pela Sociedade Brasileira de Computação (SBC). A edição de 2026 será sediada no Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE) - campus Crato.</p><br>
+            <p>O evento visa descentralizar o fomento à pesquisa no Nordeste, trazendo o debate central sobre como as Inteligências Artificiais Generativas estão a reescrever as práticas de setores fundamentais como a Saúde, Educação, Direito, Artes e Indústria, exigindo a reflexão sobre a soberania tecnológica regional.</p>
+        </div>
+    </section>
+
+
+    <section id="local">
+        <h2 class="section-title">Localização</h2>
+        <div style="text-align: center;">
+            <h3>Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)</h3>
+            <p style="margin-top: 1rem; color: #555;">Campus Crato - Região do Cariri, Ceará, Brasil</p>
+            <p style="margin-top: 1rem;">O campus oferece uma infraestrutura de excelência, incluindo um auditório principal e laboratórios de informática climatizados, proporcionando o ambiente ideal para os debates e minicursos práticos.</p>
+        </div>
+    </section>
+
+   <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>

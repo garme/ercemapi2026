@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamada de Artigos - XIV ERCEMAPI 2026</title>
+    <style>
+        :root { 
+            --primary-color: #1a1a2e; 
+            --secondary-color: #16213e; 
+            --accent-color: #0f3460; 
+            --highlight: #e94560; 
+            --text-light: #f5f5f5; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        .page-header { 
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-bottom: 5px solid var(--highlight);
+        }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
+        
+        /* Esta é a classe que cria as margens esquerdas e direitas! */
+        .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; text-align: justify; }
+        
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--highlight); padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1.5rem; }
+        ul.regras { list-style-type: square; margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
+        ul.regras li { margin-bottom: 0.8rem; }
+        .highlight-box { background-color: #ffe8ec; border-left: 4px solid var(--highlight); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; text-align: left;}
+        .tabela-datas { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 3rem;}
+        .tabela-datas th, .tabela-datas td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .tabela-datas th { background-color: var(--primary-color); color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="page-header">
+        <h1>Chamada de Artigos</h1>
+        <p>Submissão de Trabalhos Científicos e Sessões Técnicas</p>
+    </div>
+
+    <div class="container">
+        <h2>Formato de Submissão</h2>
+        <p>A XIV ERCEMAPI aceitará submissão de artigos completos, que devem apresentar contribuições originais de pesquisa. Alguns aspetos cruciais que devem ser observados na preparação e submissão:</p>
+        <br>
+        <ul class="regras">
+            <li>Os artigos utilizarão o template de publicações de artigos da SBC.</li>
+            <li>Todos os artigos devem ser submetidos no formato PDF, exclusivamente através do sistema JEMS.</li>
+            <li>Os artigos deverão ser escritos em português ou inglês.</li>
+            <li><strong>Os artigos deverão ter no mínimo 8 e no máximo 10 páginas</strong>, incluindo tabelas, figuras e referências.</li>
+            <li>No artigo não deverá constar qualquer tipo de identificação dos autores (<em>Double Blind-Review</em>). A não observância desta regra resulta em rejeição automática.</li>
+            <li>Na versão final (*Camera-Ready*), caso o artigo seja aceite, os dados dos autores e filiações deverão ser incluídos.</li>
+            <li>A aceitação implica que pelo menos um dos autores deverá inscrever-se no evento e apresentá-lo em sessão técnica oral.</li>
+        </ul>
+
+        <div class="highlight-box">
+            <strong>Premiação e Publicação Estendida:</strong> O Comitê Técnico-Científico anunciará a classificação dos 05 (cinco) melhores artigos do evento (1º ao 3º lugar e duas menções honrosas). Os autores serão convidados a publicar uma versão estendida (com pelo menos 30% de conteúdo inédito) na Revista de Sistemas e Computação (RSC) com Qualis B4 (Extrato 2021-2024).
+        </div>
+
+        <h2>Datas Importantes</h2>
+        <table class="tabela-datas">
+            <tr>
+                <th>Atividade</th>
+                <th>Prazo (Deadline)</th>
+            </tr>
+            <tr>
+                <td>Submissão de Artigos</td>
+                <td>02 de setembro de 2026</td>
+            </tr>
+            <tr>
+                <td>Notificação de Aceitação</td>
+                <td>07 de outubro de 2026</td>
+            </tr>
+            <tr>
+                <td>Envio da Versão Final e Inscrição de Autores</td>
+                <td>21 de outubro de 2026</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
