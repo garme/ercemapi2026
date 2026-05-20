@@ -14,7 +14,7 @@
         font-size: 1.05rem;
     }
     
-    /* Layout para os logótipos - Nova estrutura em container e linhas */
+    /* Layout para os logótipos */
     .footer-logos-container {
         background-color: #ffffff;
         padding: 2.5rem 2rem;
@@ -24,7 +24,7 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         display: flex;
         flex-direction: column;
-        gap: 3rem; /* Espaço entre a linha de cima e a linha de baixo */
+        gap: 3rem; /* Espaço vertical padrão entre as linhas */
     }
     
     .logos-row {
@@ -32,7 +32,7 @@
         justify-content: center;
         align-items: flex-start;
         flex-wrap: wrap;
-        gap: 6rem; /* Aumentado o espaço horizontal entre Realização e Organização */
+        gap: 6rem; /* Espaço horizontal padrão entre os grupos */
     }
 
     .logo-group {
@@ -56,12 +56,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2.5rem; /* Espaço entre as logos do IFCE e UFC */
+        gap: 2.5rem; 
     }
     
-    /* Controle de tamanho das imagens */
+    /* Controle de tamanho das imagens no Desktop */
     .logo-items img {
         max-height: 70px;
+        max-width: 100%; /* Impede que a imagem ultrapasse o tamanho da tela */
         width: auto;
         object-fit: contain;
         transition: transform 0.3s ease;
@@ -85,12 +86,40 @@
         text-decoration: underline;
     }
 
-    /* Ajuste para telas menores (celulares) */
+    /* ====== REGRA DE RESPONSIVIDADE (Telas até 768px - Mobile) ====== */
     @media (max-width: 768px) {
+        .main-footer {
+            padding: 2rem 5%; /* Reduz o espaçamento do rodapé geral */
+        }
+        
+        .main-footer p {
+            font-size: 0.95rem; /* Diminui levemente o texto do copyright */
+        }
+
+        .footer-logos-container {
+            padding: 1.5rem 1rem; /* Reduz o espaço branco interno no mobile */
+            gap: 2rem; /* Diminui a distância vertical entre as duas linhas originais */
+            margin: 1.5rem auto;
+        }
+        
         .logos-row {
-            flex-direction: column;
+            flex-direction: column; /* Transforma as linhas horizontais em blocos verticais */
             align-items: center;
-            gap: 3rem;
+            gap: 2rem; /* Reduz o espaçamento entre grupos de logos */
+        }
+        
+        .logo-group {
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .logo-items {
+            flex-wrap: wrap; /* Permite que os logos quebrem linha em celulares muito estreitos */
+            gap: 1.5rem; /* Reduz o espaço entre logos vizinhos (ex: IFCE e UFC) */
+        }
+        
+        .logo-items img {
+            max-height: 55px; /* Diminui o tamanho máximo das imagens para harmonizar no mobile */
         }
     }
 </style>

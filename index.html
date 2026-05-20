@@ -40,6 +40,16 @@
         /* Rodapé */
         footer { background-color: var(--primary-color); color: var(--text-light); text-align: center; padding: 2rem 5%; margin-top: 2rem; }
         .realizacao { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+        
+        /* Mapa Responsivo */
+        .map-container {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -66,7 +76,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -76,7 +86,7 @@
         <h1>XIV Escola Regional de Computação<br>Ceará, Maranhão e Piauí</h1>
         <h2>As IAs Generativas: Redefinindo as Fronteiras entre a Computação e a Sociedade</h2>
         <p>11 a 13 de Novembro de 2026 | IFCE Campus Crato - Ceará</p>
-        <a href="#inscricoes" class="btn">Garantir Inscrição</a>
+        <a href="inscricoes.html" class="btn">Garantir Inscrição</a>
     </div>
 
     <section id="sobre">
@@ -87,14 +97,24 @@
         </div>
     </section>
 
-
     <section id="local">
         <h2 class="section-title">Localização</h2>
         <div style="text-align: center;">
             <h3>Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)</h3>
             <p style="margin-top: 1rem; color: #555;">Campus Crato - Região do Cariri, Ceará, Brasil</p>
-            <p style="margin-top: 1rem;">O campus oferece uma infraestrutura de excelência, incluindo um auditório principal e laboratórios de informática climatizados, proporcionando o ambiente ideal para os debates e minicursos práticos.</p>
-        </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/maps?q=IFCE+campus+Crato&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            </div>
     </section>
 
    <div id="footer-placeholder"></div>
