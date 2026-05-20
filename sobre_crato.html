@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre o Crato - XIV ERCEMAPI 2026</title>
+    <style>
+        :root { 
+            --primary-color: #1a1a2e; 
+            --secondary-color: #16213e; 
+            --accent-color: #0f3460; 
+            --highlight: #e94560; 
+            --text-light: #f5f5f5; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
+        
+        .page-header { 
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-bottom: 5px solid var(--highlight);
+        }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
+        
+        .container { max-width: 950px; margin: 3rem auto; padding: 0 2rem; }
+        
+        .info-card { background: white; padding: 2.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+        .info-card h2 { color: var(--primary-color); border-bottom: 2px solid var(--highlight); padding-bottom: 0.5rem; margin-bottom: 1.2rem; font-size: 1.5rem; }
+        .info-card p { text-align: justify; margin-bottom: 1.2rem; font-size: 1.05rem; color: #444; }
+        .info-card p:last-child { margin-bottom: 0; }
+        
+        .badge-cariri { background-color: #e3f2fd; border-left: 4px solid #1e88e5; padding: 1.2rem; border-radius: 0 8px 8px 0; margin-top: 1rem; }
+        .badge-cariri p { color: #0f3460; font-weight: 500; margin: 0; }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="page-header">
+        <h1>Conheça o Crato - CE</h1>
+        <p>A histórica "Princesa do Cariri" e cidade-sede da XIV ERCEMAPI 2026</p>
+    </div>
+
+    <div class="container">
+        
+        <div class="info-card">
+            <h2>História e Tradição</h2>
+            <p>Fundando inicialmente como uma missão capuchinha no século XVII e elevado à categoria de vila em 1764, o Crato possui um papel de vanguarda na história política e social do Nordeste brasileiro. Conhecido historicamente como um polo intelectual, a cidade participou ativamente de movimentos libertários cruciais, como a Revolução Pernambucana de 1817, sob a liderança marcante da heroína Bárbara de Alencar.</p>
+            <p>Situado no fértil Vale do Cariri e abençoado pelas fontes naturais de água originárias da encosta do Araripe, o município consolidou-se como um entroncamento comercial, educacional e cultural estratégico, integrando o Sul do Ceará aos estados vizinhos de Pernambuco, Piauí e Paraíba.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>Turismo Cultural e Religioso</h2>
+            <p>O Crato pulsa arte e tradição popular. A cidade e a região do Cariri são consideradas um autêntico "caldeirão cultural", abrigando manifestações únicas como o Reisado de Couro, grupos de tradição de Maneiro Pau, bandas de pífanos e a consagrada literatura de cordel. Infraestruturas modernas, como o Centro Cultural do Cariri Sérgio Motta, transformam a região em um dinâmico polo de teatro, música e artes visuais contemporâneas.</p>
+            <p>No âmbito do turismo religioso, embora o vizinho Juazeiro do Norte concentre as massivas romarias do Padre Cícero, o Crato resguarda raízes profundas de fé e devoção histórica, simbolizadas pela imponente Catedral de Nossa Senhora da Penha (século XVIII) e pelas festividades tradicionais que movimentam milhares de fiéis, preservando a identidade mística do Cariri.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>Turismo Ecológico e Geopark Araripe</h2>
+            <p>Localizado ao pé da majestosa Chapada do Araripe, o Crato é o destino ideal para o ecoturismo. A cidade abriga expressiva parcela da Floresta Nacional do Araripe-Apodi (FLONA), a primeira floresta nacional criada no Brasil. O ecossistema local é repleto de trilhas ecológicas, fontes naturais e cachoeiras, como as do Lameiro, atuando como um verdadeiro oásis verde no coração do semiárido nordestino.</p>
+            
+            <div class="badge-cariri">
+                <p>Patrimônio Mundial da UNESCO: O Cariri sedia o Geopark Araripe, o primeiro Geoparque Mundial da UNESCO na América Latina. O Crato possui geossítios de importância internacional, como o Geossítio Batateira, que preserva registros geológicos raros, paisagens exuberantes e uma rica história paleontológica de relevância mundial.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>

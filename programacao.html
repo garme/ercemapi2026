@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programação - XIV ERCEMAPI 2026</title>
+    <style>
+        :root { 
+            --primary-color: #1a1a2e; 
+            --secondary-color: #16213e; 
+            --accent-color: #0f3460; 
+            --highlight: #e94560; 
+            --text-light: #f5f5f5; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f9f9f9; color: #333; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        
+        .page-header { 
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
+            color: white; 
+            text-align: center; 
+            padding: 4rem 2rem; 
+            border-bottom: 5px solid var(--highlight);
+        }
+        .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
+        
+        .container { max-width: 900px; margin: auto; padding: 4rem 2rem; flex: 1; display: flex; justify-content: center; align-items: center; }
+        
+        .coming-soon-box { 
+            background: white; 
+            padding: 3.5rem 2.5rem; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            text-align: center;
+            border-top: 4px solid var(--highlight);
+            max-width: 600px;
+        }
+        
+        .coming-soon-box .icon {
+            font-size: 4rem;
+            color: var(--highlight);
+            margin-bottom: 1.5rem;
+        }
+        
+        .coming-soon-box h2 { 
+            color: var(--primary-color); 
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .coming-soon-box p { 
+            color: #666; 
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+
+                let currentPage = window.location.pathname.split('/').pop().split('.')[0];
+                if (currentPage === "" || currentPage === "index") currentPage = "index";
+
+                const links = document.querySelectorAll('#nav-links a');
+                links.forEach(link => {
+                    if (link.getAttribute('data-page') === currentPage) {
+                        link.classList.add('active');
+                    }
+                });
+
+                if (currentPage === "artigos" || currentPage === "minicursos") {
+                    document.getElementById('menu-chamadas').classList.add('active');
+                }
+                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                    document.getElementById('menu-informacoes').classList.add('active');
+                }
+            });
+    </script>
+
+    <div class="page-header">
+        <h1>Programação do Evento</h1>
+        <p>Cronograma de atividades, palestras e sessões técnicas</p>
+    </div>
+
+    <div class="container">
+        <div class="coming-soon-box">
+            <div class="icon">📅</div>
+            <h2>Em Breve!</h2>
+            <p>A programação técnico-científica detalhada, incluindo os horários das sessões técnicas, minicursos práticos e as palestras magnas sobre Inteligência Artificial Generativa, está a ser consolidada pela comissão organizadora.</p>
+            <p style="font-size: 0.95rem; color: #999;">Os horários oficiais serão publicados logo após a divulgação dos trabalhos aprovados.</p>
+        </div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+</body>
+</html>
