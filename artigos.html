@@ -25,13 +25,20 @@
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
         
-        /* Esta é a classe que cria as margens esquerdas e direitas! */
         .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; text-align: justify; }
         
         h2 { color: var(--primary-color); border-bottom: 2px solid var(--highlight); padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1.5rem; }
-        ul.regras { list-style-type: square; margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
-        ul.regras li { margin-bottom: 0.8rem; }
+        h3 { color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem; }
+        
+        ul.regras, ul.temas { margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
+        ul.regras li { margin-bottom: 0.8rem; list-style-type: square; }
+        ul.temas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; list-style-type: disc; }
+        
         .highlight-box { background-color: #ffe8ec; border-left: 4px solid var(--highlight); padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; text-align: left;}
+        
+        .btn-link { display: inline-block; background-color: var(--highlight); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px; font-weight: 600; margin-top: 0.5rem; margin-bottom: 1.5rem; transition: 0.3s; }
+        .btn-link:hover { background-color: #d13d56; }
+        
         .tabela-datas { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 3rem;}
         .tabela-datas th, .tabela-datas td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .tabela-datas th { background-color: var(--primary-color); color: white; }
@@ -59,7 +66,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -71,21 +78,67 @@
     </div>
 
     <div class="container">
-        <h2>Formato de Submissão</h2>
-        <p>A XIV ERCEMAPI aceitará submissão de artigos completos, que devem apresentar contribuições originais de pesquisa. Alguns aspetos cruciais que devem ser observados na preparação e submissão:</p>
+        <h2>Formato de Submissão de Artigos</h2>
+        <p>Os artigos devem ser submetidos seguindo rigorosamente o formato definido pela SBC, <strong>SEM identificação dos autores</strong>. Todos os artigos submetidos passarão por um processo de avaliação duplamente cega (<strong>double blind review process</strong>). Serão julgados segundo a sua relevância técnico-científica, adequação ao evento, estrutura, qualidade do texto e resultados apresentados.</p>
+        
         <br>
+        <a href="https://www.sbc.org.br/wp-content/uploads/2024/07/modelosparapublicaodeartigos.zip" target="_blank" class="btn-link">⬇ Baixar Template de Artigos da SBC</a>
+
+        <p>A submissão deverá ser efetuada exclusivamente de forma eletrônica pelo sistema de submissões de artigos científicos da SBC (JEMS 3):</p>
+        
+        <a href="https://jems3.sbc.org.br/" target="_blank" class="btn-link" style="background-color: var(--accent-color);">Acessar o Sistema JEMS 3</a>
+
+        <h3>Diretrizes Adicionais:</h3>
         <ul class="regras">
-            <li>Os artigos utilizarão o template de publicações de artigos da SBC.</li>
-            <li>Todos os artigos devem ser submetidos no formato PDF, exclusivamente através do sistema JEMS.</li>
-            <li>Os artigos deverão ser escritos em português ou inglês.</li>
-            <li><strong>Os artigos deverão ter no mínimo 8 e no máximo 10 páginas</strong>, incluindo tabelas, figuras e referências.</li>
-            <li>No artigo não deverá constar qualquer tipo de identificação dos autores (<em>Double Blind-Review</em>). A não observância desta regra resulta em rejeição automática.</li>
-            <li>Na versão final (*Camera-Ready*), caso o artigo seja aceite, os dados dos autores e filiações deverão ser incluídos.</li>
-            <li>A aceitação implica que pelo menos um dos autores deverá inscrever-se no evento e apresentá-lo em sessão técnica oral.</li>
+            <li>Todos os artigos devem ser submetidos no formato PDF.</li>
+            <li>Os trabalhos deverão ser redigidos em português ou inglês.</li>
+            <li><strong>Os artigos deverão ter no mínimo 8 e no máximo 10 páginas</strong>, incluindo tabelas, figuras e referências bibliográficas.</li>
+            <li>Os autores não podem incluir informações que permitam a sua identificação (nome, filiação, explicitação do autor em referências, nomes de projetos, etc.). Artigos que desobedecerem ao sistema <em>Double Blind-Review</em> serão automaticamente rejeitados.</li>
+            <li>Na versão final (após aprovação), os dados dos autores e afiliações institucionais deverão ser incluídos.</li>
+            <li>A aceitação de um artigo implica que, pelo menos, um dos seus autores deverá inscrever-se no evento e apresentá-lo em sessão técnica oral.</li>
         </ul>
 
+        <h2>Temas de Interesse</h2>
+        <p>A lista (não exaustiva) de tópicos de interesse inclui:</p>
+        <ul class="temas">
+            <li>Análise de Aprendizagem</li>
+            <li>Arquitetura de Computadores</li>
+            <li>Avaliação de Desempenho</li>
+            <li>Banco de Dados</li>
+            <li>Bioinformática</li>
+            <li>Ciência de Dados</li>
+            <li>Computação em Nuvem</li>
+            <li>Computação Gráfica</li>
+            <li>Educação em Informática</li>
+            <li>Empreendedorismo e Inovação</li>
+            <li>Engenharia de Software</li>
+            <li>Gestão de Tecnologia da Informação</li>
+            <li>Inclusão Digital</li>
+            <li>Informática Industrial</li>
+            <li>Informática na Educação</li>
+            <li>Informática Pública</li>
+            <li>Inteligência Artificial</li>
+            <li>Interação Humano-Computador</li>
+            <li>Internet das Coisas (IoT)</li>
+            <li>Jogos e Gamificação</li>
+            <li>Mineração de Dados</li>
+            <li>Otimização</li>
+            <li>Processamento de Imagens</li>
+            <li>Qualidade de Software</li>
+            <li>Reconhecimento de Padrões</li>
+            <li>Redes de Computadores</li>
+            <li>Robótica</li>
+            <li>Segurança da Informação</li>
+            <li>Sistemas de Informação</li>
+            <li>Sistemas Distribuídos e Computação Móvel</li>
+            <li>Sistemas Hipermídia, Multimídia e Web</li>
+            <li>Sistemas Operacionais</li>
+            <li>Software Livre</li>
+        </ul>
+
+        <h2>Premiação</h2>
         <div class="highlight-box">
-            <strong>Premiação e Publicação Estendida:</strong> O Comitê Técnico-Científico anunciará a classificação dos 05 (cinco) melhores artigos do evento (1º ao 3º lugar e duas menções honrosas). Os autores serão convidados a publicar uma versão estendida (com pelo menos 30% de conteúdo inédito) na Revista de Sistemas e Computação (RSC) com Qualis B4 (Extrato 2021-2024).
+            O Comitê Técnico-Científico anunciará, durante o evento, a classificação dos 05 (cinco) melhores artigos (1º ao 3º lugar e duas menções honrosas). Os autores serão convidados a publicar uma versão estendida (com pelo menos 30% de conteúdo inédito) na edição especial da <strong>Revista de Sistemas e Computação (RSC)</strong>, que possui Qualis B4 (Extrato 2021-2024).
         </div>
 
         <h2>Datas Importantes</h2>
@@ -93,19 +146,27 @@
             <table class="tabela-datas">
                 <tr>
                     <th>Atividade</th>
-                    <th>Prazo (Deadline)</th>
+                    <th>Prazo (*Deadline*)</th>
                 </tr>
                 <tr>
                     <td>Submissão de Artigos</td>
-                    <td>02 de setembro de 2026</td>
+                    <td>06 de setembro de 2026</td>
                 </tr>
                 <tr>
                     <td>Notificação de Aceitação</td>
-                    <td>07 de outubro de 2026</td>
+                    <td>11 de outubro de 2026</td>
                 </tr>
                 <tr>
-                    <td>Envio da Versão Final e Inscrição de Autores</td>
-                    <td>21 de outubro de 2026</td>
+                    <td>Envio da Versão Final</td>
+                    <td>23 de outubro de 2026</td>
+                </tr>
+                <tr>
+                    <td>Envio do Termo de Autorização de Publicação</td>
+                    <td>23 de outubro de 2026</td>
+                </tr>
+                <tr>
+                    <td>Inscrições dos Autores</td>
+                    <td>23 de outubro de 2026</td>
                 </tr>
             </table>
         </div>

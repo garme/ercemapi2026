@@ -25,13 +25,20 @@
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
         
-        /* Classe responsável pelas margens */
         .container { max-width: 900px; margin: 3rem auto; padding: 0 2rem; text-align: justify; }
         
         h2 { color: var(--primary-color); border-bottom: 2px solid var(--highlight); padding-bottom: 0.5rem; margin-top: 2.5rem; margin-bottom: 1.5rem; }
-        ul.regras { list-style-type: square; margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
-        ul.regras li { margin-bottom: 0.8rem; }
+        h3 { color: var(--accent-color); margin-top: 2rem; margin-bottom: 1rem; }
+        
+        ul.regras, ul.temas { margin-left: 2rem; margin-bottom: 1.5rem; text-align: left; }
+        ul.regras li { margin-bottom: 0.8rem; list-style-type: square; }
+        ul.temas { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 0.5rem; list-style-type: disc; }
+        
         .highlight-box { background-color: #e3f2fd; border-left: 4px solid #1e88e5; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; text-align: left;}
+        
+        .btn-link { display: inline-block; background-color: var(--highlight); color: white; padding: 0.6rem 1.2rem; text-decoration: none; border-radius: 4px; font-weight: 600; margin-top: 0.5rem; margin-bottom: 1.5rem; transition: 0.3s; }
+        .btn-link:hover { background-color: #d13d56; }
+
         .tabela-datas { width: 100%; border-collapse: collapse; margin-top: 1rem; margin-bottom: 3rem;}
         .tabela-datas th, .tabela-datas td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         .tabela-datas th { background-color: var(--primary-color); color: white; }
@@ -59,7 +66,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -71,39 +78,98 @@
     </div>
 
     <div class="container">
-        <h2>Submissão de Propostas (Resumos)</h2>
-        <p>Convidamos investigadores, professores e profissionais a submeterem propostas de minicursos abordando os temas centrais da chamada de 2026. A avaliação das propostas baseia-se na submissão de um resumo estendido:</p>
-        <br>
+        <h2>Informações aos Autores</h2>
+        <p>Convidamos alunos de graduação e pós-graduação, pesquisadores e profissionais a submeterem propostas de minicursos com duração de 4 (quatro) horas, abordando os temas sugeridos nesta chamada. </p>
+
+        <h3>Diretrizes para o Processo de Seleção:</h3>
         <ul class="regras">
-            <li>Os resumos deverão ter <strong>no máximo 5 páginas</strong>, incluindo referências.</li>
-            <li>Os resumos utilizarão o template de publicações de artigos da SBC.</li>
-            <li>No resumo <strong>não deverá constar</strong> nenhum tipo de identificação dos autores (<em>Double Blind-Review</em>). Omissão desta regra gera rejeição imediata.</li>
-            <li>O texto deve especificar a estrutura em seções: relevância da proposta, conteúdo programático, metodologia do minicurso (especificando as dinâmicas práticas) e a bibliografia.</li>
-            <li>O envio é feito exclusivamente no formato PDF pelo sistema JEMS.</li>
+            <li>Para o processo de seleção, os autores deverão enviar um arquivo contendo o título, o público-alvo e o resumo do minicurso.</li>
+            <li>O resumo deve especificar a estrutura do texto em seções e conter a bibliografia a ser usada. A estrutura deve trazer a relevância da proposta, o conteúdo programático e a metodologia do minicurso (especificando a prática, se houver).</li>
+            <li>Cada proposta será submetida à avaliação por pares e julgada segundo a sua relevância técnico-científica, adequação ao evento e qualidade do texto.</li>
+            <li>O resumo deverá seguir o modelo de artigos da SBC e <strong>não deverá ultrapassar 5 páginas</strong>.</li>
+            <a href="https://www.sbc.org.br/wp-content/uploads/2024/07/modelosparapublicaodeartigos.zip" target="_blank" class="btn-link">⬇ Baixar Template de Artigos da SBC</a>
+            <li><strong>Atenção à Avaliação Cega (Double Blind-Review):</strong> No arquivo do resumo <strong>não deverá constar</strong> nenhum tipo de identificação dos autores. Dados vitais como instituição de vínculo, currículo resumido dos autores e indicação dos prováveis apresentadores deverão ser inseridos <strong>exclusivamente</strong> nos metadados da plataforma JEMS durante a submissão. Resumos que desobedecerem a esta regra no PDF serão automaticamente rejeitados.</li>
+            <li>O resumo do minicurso e a versão final do capítulo deverão ser submetidos exclusivamente de forma eletrónica pelo sistema de submissões de artigos científicos da SBC (JEMS 3).</li>
+            <a href="https://jems3.sbc.org.br/" target="_blank" class="btn-link" style="background-color: var(--accent-color); margin-left: 10px;">Acessar o Sistema JEMS 3</a>
+            <li>A aceitação de um minicurso implica que pelo menos um dos seus autores deverá inscrever-se no evento para a apresentação do mesmo.</li>
         </ul>
 
+        <h2>Publicação do Capítulo Final</h2>
         <div class="highlight-box">
-            <strong>Publicação do Capítulo Final:</strong> Os autores das propostas aprovadas deverão ministrar o minicurso durante o evento. Além disso, comprometer-se-ão a submeter o texto final do capítulo (com até 25 páginas), que será publicado em livro oficial da SBC com ISBN (SBC Open Lib).
+            Os autores dos minicursos selecionados deverão submeter, na data indicada no cronograma a seguir, o texto final do capítulo (<strong>com até 25 páginas</strong>) a ser publicado em livro oficial da SBC com ISBN (SBC Open Lib).
         </div>
+        
+        <p>A proposta final deve estar obrigatoriamente de acordo com o formato da SBC para Capítulos de Livros, disponível para download abaixo:</p>
+        <a href="https://www.sbc.org.br/wp-content/uploads/2024/07/modeloparapublicaodecaptulosdelivros.zip" target="_blank" class="btn-link" style="background-color: #2e7d32;">⬇ Baixar Template de Capítulos de Livros da SBC</a>
+
+        <h2>Temas de Interesse</h2>
+        <p>A lista de tópicos de interesse inclui:</p>
+        <ul class="temas">
+            <li>Análise de Aprendizagem</li>
+            <li>Arquitetura de Computadores</li>
+            <li>Avaliação de Desempenho</li>
+            <li>Banco de Dados</li>
+            <li>Bioinformática</li>
+            <li>Ciência de Dados</li>
+            <li>Computação em Nuvem</li>
+            <li>Computação Gráfica</li>
+            <li>Educação em Informática</li>
+            <li>Empreendedorismo e Inovação</li>
+            <li>Engenharia de Software</li>
+            <li>Gestão de Tecnologia da Informação</li>
+            <li>Inclusão Digital</li>
+            <li>Informática Industrial</li>
+            <li>Informática na Educação</li>
+            <li>Informática Pública</li>
+            <li>Inteligência Artificial</li>
+            <li>Interação Humano-Computador</li>
+            <li>Internet das Coisas (IoT)</li>
+            <li>Jogos e Gamificação</li>
+            <li>Mineração de Dados</li>
+            <li>Otimização</li>
+            <li>Processamento de Imagens</li>
+            <li>Qualidade de Software</li>
+            <li>Reconhecimento de Padrões</li>
+            <li>Redes de Computadores</li>
+            <li>Robótica</li>
+            <li>Segurança da Informação</li>
+            <li>Sistemas de Informação</li>
+            <li>Sistemas Distribuídos e Computação Móvel</li>
+            <li>Sistemas Hipermídia, Multimídia e Web</li>
+            <li>Sistemas Operacionais</li>
+            <li>Software Livre</li>
+        </ul>
 
         <h2>Datas Importantes</h2>
         <div style="overflow-x: auto;">
             <table class="tabela-datas">
                 <tr>
                     <th>Atividade</th>
-                    <th>Prazo (Deadline)</th>
+                    <th>Prazo (*Deadline*)</th>
                 </tr>
                 <tr>
-                    <td>Submissão do Resumo do Minicurso</td>
+                    <td>Submissão Resumo de Minicursos</td>
                     <td>12 de agosto de 2026</td>
                 </tr>
                 <tr>
                     <td>Notificação de Aceitação</td>
-                    <td>02 de setembro de 2026</td>
+                    <td>05 de setembro de 2026</td>
                 </tr>
                 <tr>
-                    <td>Envio da Versão Final (Capítulo 25 pág.) e Inscrição</td>
-                    <td>21 de outubro de 2026</td>
+                    <td>Confirmação de Participação no Evento</td>
+                    <td>26 de setembro de 2026</td>
+                </tr>
+                <tr>
+                    <td>Envio da Versão Final do Capítulo</td>
+                    <td>23 de outubro de 2026</td>
+                </tr>
+                <tr>
+                    <td>Envio do Termo de Autorização de Publicação</td>
+                    <td>23 de outubro de 2026</td>
+                </tr>
+                <tr>
+                    <td>Inscrições dos Autores</td>
+                    <td>23 de outubro de 2026</td>
                 </tr>
             </table>
         </div>

@@ -1,5 +1,5 @@
 <style>
-    /* Estilos exclusivos do cabeçalho */
+    /* Estilos base do cabeçalho */
     .main-header {
         background: linear-gradient(90deg, #1a1a2e 0%, #16213e 100%);
         padding: 0.8rem 5%;
@@ -13,7 +13,7 @@
         border-bottom: 3px solid #e94560;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
     .main-header .logo-container a {
         display: flex;
         align-items: center;
@@ -23,59 +23,22 @@
         text-decoration: none;
         transition: transform 0.3s ease;
     }
-    .main-header .logo-container a:hover {
-        transform: scale(1.05); 
-    }
-    .main-header .logo-container img {
-        max-height: 100px;
-        width: auto;
-        object-fit: contain;
-    }
+    .main-header .logo-container img { max-height: 100px; width: auto; object-fit: contain; }
 
-    /* Menu Padrão (Computador) */
-    .main-header nav ul {
-        list-style: none;
-        display: flex;
-        gap: 2rem;
-        margin: 0;
-        padding: 0;
-        align-items: center;
-    }
+    /* Navegação */
+    .main-header nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; align-items: center; }
     .main-header nav a {
         color: #f5f5f5;
         text-decoration: none;
         font-weight: 500;
         font-size: 1.1rem;
-        transition: color 0.3s ease;
-        position: relative;
-        padding: 0.5rem 0;
         cursor: pointer;
-    }
-    
-    .main-header nav a::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: #e94560;
-        transition: width 0.3s ease;
-    }
-    .main-header nav a:hover::after, 
-    .main-header nav a.active::after {
-        width: 100%;
-    }
-    .main-header nav a:hover, 
-    .main-header nav a.active {
-        color: #e94560;
+        padding: 0.5rem 0;
+        position: relative;
     }
 
-    /* Dropdown Geral */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+    /* Submenus (Dropdowns) */
+    .dropdown { position: relative; }
     .dropdown-content {
         display: none;
         position: absolute;
@@ -88,92 +51,36 @@
         top: 100%;
         left: 0;
     }
+    
     .dropdown-content a {
-        color: #f5f5f5;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        font-size: 1rem;
-        transition: background 0.3s;
+    color: #f5f5f5;
+    padding: 12px 20px;
+    padding-left: 15px !important;
+    text-decoration: none;
+    display: block;
+    font-size: 1rem;
+    transition: background 0.3s;
+    box-sizing: border-box;
+    text-align: left;
     }
-    .dropdown-content a::after {
-        display: none; 
-    }
+    
     .dropdown-content a:hover {
         background-color: #0f3460;
         color: #e94560;
     }
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
+    .dropdown:hover .dropdown-content { display: block; }
 
-    /* Botão Hambúrguer (Escondido no PC) */
-    .menu-toggle {
-        display: none;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 6px;
-    }
-    .menu-toggle .bar {
-        width: 30px;
-        height: 3px;
-        background-color: #f5f5f5;
-        border-radius: 2px;
-        transition: 0.3s;
-    }
+    /* Menu Mobile */
+    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 6px; }
+    .menu-toggle .bar { width: 30px; height: 3px; background-color: #f5f5f5; }
 
-    /* ====== RESPONSIVIDADE (Telemóveis e Tablets) ====== */
     @media (max-width: 950px) {
-        .menu-toggle {
-            display: flex; /* Mostra o botão hambúrguer */
-        }
-        
-        .main-header nav {
-            display: none; /* Esconde o menu por padrão no mobile */
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            border-bottom: 3px solid #e94560;
-            box-shadow: 0 10px 15px rgba(0,0,0,0.5);
-        }
-        
-        /* Classe que o JavaScript vai ativar para mostrar o menu */
-        .main-header nav.active {
-            display: block;
-        }
-
-        .main-header nav ul {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0;
-            padding: 1rem 5%;
-        }
-
-        .main-header nav a {
-            width: 100%;
-            display: block;
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* Ajustes do Dropdown para Mobile */
-        .dropdown {
-            width: 100%;
-        }
-        .dropdown-content {
-            position: static; /* Faz os submenus empurrarem o conteúdo para baixo */
-            box-shadow: none;
-            background-color: rgba(0, 0, 0, 0.2); /* Fundo mais escuro para diferenciar */
-            border-top: none;
-            padding-left: 1.5rem; /* Indentação */
-        }
-        
-        /* Diminui a logo ligeiramente em ecrãs muito pequenos */
-        .main-header .logo-container img {
-            max-height: 70px;
-        }
+        .menu-toggle { display: flex; }
+        .main-header nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #16213e; }
+        .main-header nav.active { display: block; }
+        .main-header nav ul { flex-direction: column; padding: 1rem 5%; }
+        .dropdown-content { position: static; background: rgba(0,0,0,0.2); border: none; }
+        .dropdown-content a { padding-left: 2.5rem; }
     }
 </style>
 
@@ -185,16 +92,13 @@
     </div>
     
     <div class="menu-toggle" onclick="document.getElementById('nav-container').classList.toggle('active')">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
     </div>
 
     <nav id="nav-container">
         <ul id="nav-links">
             <li><a href="index.html" data-page="index">Início</a></li>
             <li><a href="index.html#sobre" data-page="sobre">Sobre</a></li>
-            
             <li class="dropdown">
                 <a id="menu-chamadas">Chamadas ▾</a>
                 <div class="dropdown-content">
@@ -202,10 +106,8 @@
                     <a href="minicursos.html" data-page="minicursos">Minicursos</a>
                 </div>
             </li>
-            
             <li><a href="programacao.html" data-page="programacao">Programação</a></li>
             <li><a href="inscricoes.html" data-page="inscricoes">Inscrições</a></li>
-            
             <li class="dropdown">
                 <a id="menu-informacoes">Informações ▾</a>
                 <div class="dropdown-content">
@@ -215,7 +117,6 @@
                     <a href="hospedagem.html" data-page="hospedagem">Dicas de Hospedagem</a>
                 </div>
             </li>
-            
             <li><a href="index.html#local" data-page="local">Local</a></li>
         </ul>
     </nav>
