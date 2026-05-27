@@ -6,57 +6,57 @@
     <link rel="stylesheet" href="css/lightbox.css">
     <title>Descubra o Crato - XIV ERCEMAPI 2026</title>
     <style>
-        :root { 
-            --primary-color: #1a1a2e; 
-            --secondary-color: #16213e; 
-            --accent-color: #0f3460; 
-            --highlight: #e94560; 
-            --text-light: #f5f5f5; 
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight: #e94560;
+            --text-light: #f5f5f5;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f9f9f9; color: #333; line-height: 1.6; }
-        
-        .page-header { 
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
-            color: white; 
-            text-align: center; 
-            padding: 4rem 2rem; 
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
             border-bottom: 5px solid var(--highlight);
         }
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .page-header p { font-size: 1.15rem; color: #ccc; font-weight: 300; max-width: 700px; margin: 0 auto; }
-        
+
         .container { max-width: 1000px; margin: 3rem auto; padding: 0 2rem; }
-        
-        .info-card { 
-            background: white; 
-            padding: 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            margin-bottom: 2.5rem; 
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2.5rem;
             border-left: 4px solid var(--accent-color);
             transition: transform 0.3s ease;
         }
         .info-card:hover { transform: translateY(-5px); }
-        
-        .info-card h2 { 
-            color: var(--primary-color); 
-            border-bottom: 2px solid var(--highlight); 
-            padding-bottom: 0.5rem; 
-            margin-bottom: 1.2rem; 
-            font-size: 1.6rem; 
+
+        .info-card h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
             display: inline-block;
         }
-        
+
         .info-card p { text-align: justify; margin-bottom: 1.2rem; font-size: 1.1rem; color: #555; }
         .info-card p:last-child { margin-bottom: 0; }
-        
-        .badge-destaque { 
-            background: linear-gradient(to right, #e3f2fd, #bbdefb); 
-            border-left: 4px solid #1e88e5; 
-            padding: 1.5rem; 
-            border-radius: 0 8px 8px 0; 
-            margin-top: 1.5rem; 
+
+        .badge-destaque {
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            border-left: 4px solid #1e88e5;
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
         }
         .badge-destaque p { color: #0d47a1; font-weight: 600; margin: 0; font-size: 1.05rem; }
         .badge-destaque span { display: block; font-size: 2rem; margin-bottom: 0.5rem; }
@@ -99,13 +99,15 @@
             max-height: 400px;
             object-fit: cover;
         }
-        .history-dual-column {
+        .history-dual-column,
+        .religious-dual-column {
             display: grid;
             grid-template-columns: minmax(0, 1fr) 290px;
             gap: 2rem;
             align-items: start;
         }
-        .history-dual-column .portrait-card {
+        .history-dual-column .portrait-card,
+        .religious-dual-column .portrait-card {
             margin-top: 0.2rem;
             max-width: 290px;
             justify-self: end;
@@ -113,6 +115,11 @@
         .history-dual-column .portrait-card img {
             max-height: 360px;
             object-fit: cover;
+        }
+        .religious-dual-column .portrait-card img {
+            height: 430px;
+            object-fit: cover;
+            object-position: center;
         }
         .card-gallery {
             display: grid;
@@ -132,15 +139,147 @@
             color: #666;
             text-align: center;
         }
+
+        .region-showcase {
+            margin-top: 2rem;
+            background: linear-gradient(180deg, #f7fafc 0%, #eef4f8 100%);
+            border: 1px solid #dfe7ef;
+            border-radius: 16px;
+            padding: 1.35rem;
+        }
+        .region-showcase-header {
+            margin-bottom: 1rem;
+        }
+        .region-showcase-header h3 {
+            color: var(--primary-color);
+            font-size: 1.35rem;
+            margin-bottom: 0.35rem;
+        }
+        .region-showcase-header p {
+            margin: 0;
+            font-size: 0.98rem;
+            color: #65707f;
+            text-align: left;
+        }
+        .slideshow {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            background: #101827;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        }
+        .slideshow-slide {
+            display: none;
+            position: relative;
+            margin: 0;
+        }
+        .slideshow-slide.active {
+            display: block;
+            animation: fadeSlide 1.15s ease;
+        }
+        .slideshow-slide img {
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            display: block;
+        }
+        .slideshow-slide figcaption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 1rem 1.1rem;
+            background: linear-gradient(180deg, rgba(10,16,24,0) 0%, rgba(10,16,24,0.78) 38%, rgba(10,16,24,0.92) 100%);
+            color: #fff;
+        }
+        .slideshow-slide figcaption strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.2rem;
+        }
+        .slideshow-slide figcaption span {
+            display: block;
+            font-size: 0.9rem;
+            color: #d7dde8;
+        }
+        .slideshow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: rgba(15, 52, 96, 0.82);
+            color: #fff;
+            font-size: 1.45rem;
+            cursor: pointer;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .slideshow-btn:hover {
+            background: rgba(233, 69, 96, 0.92);
+            transform: translateY(-50%) scale(1.04);
+        }
+        .slideshow-btn.prev { left: 12px; }
+        .slideshow-btn.next { right: 12px; }
+        .slideshow-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.55rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 0;
+            background: #b7c3d0;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .slideshow-dot.active {
+            background: var(--highlight);
+            transform: scale(1.12);
+        }
+        .slideshow-note {
+            margin-top: 0.9rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0.45; transform: scale(1.01); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
         @media (max-width: 760px) {
-            .history-dual-column {
+            .history-dual-column,
+            .religious-dual-column {
                 grid-template-columns: 1fr;
                 gap: 1.2rem;
             }
-            .history-dual-column .portrait-card {
+            .history-dual-column .portrait-card,
+            .religious-dual-column .portrait-card {
                 justify-self: center;
                 max-width: 320px;
                 margin-top: 0.5rem;
+            }
+            .religious-dual-column .portrait-card img {
+                height: auto;
+                max-height: 430px;
+            }
+            .slideshow-slide img {
+                height: 330px;
+            }
+            .slideshow-slide figcaption {
+                position: static;
+                background: #111827;
             }
         }
         @media (max-width: 640px) {
@@ -148,6 +287,15 @@
             .card-gallery { grid-template-columns: 1fr; }
             .religious-gallery img { height: auto; max-height: 430px; }
             .card-image img { max-height: 320px; }
+            .slideshow-slide img {
+                height: 260px;
+            }
+            .slideshow-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .region-showcase { padding: 1rem; }
         }
     </style>
 </head>
@@ -185,7 +333,7 @@
     </div>
 
     <div class="container">
-        
+
         <div class="info-card">
             <h2>História e Vanguarda Republicana</h2>
             <div class="history-dual-column">
@@ -202,14 +350,12 @@
 
         <div class="info-card">
             <h2>O Gigante do Turismo Religioso e Berço da Fé</h2>
-            <p>O Cariri é movido pela devoção. E é aqui, no Crato, que se encontra o verdadeiro berço da fé nordestina: a cidade é a terra natal do <strong>Padre Cícero Romão Batista</strong>, nascido a 24 de março de 1844, a figura central do misticismo e da religiosidade de todo o Ceará.</p>
-            <p>Reverenciando essa força espiritual, o Crato inscreveu o seu nome na história do turismo mundial com a inauguração, no final de 2025, da <strong>maior estátua de Nossa Senhora de Fátima do mundo</strong>. Este impressionante monumento de 54 metros de altura atrai milhares de visitantes, oferecendo uma vista panorâmica deslumbrante e consolidando-se como uma paragem obrigatória para os congressistas.</p>
-            <div class="card-gallery religious-gallery">
-                <figure>
-                    <img class="expandable-image" src="img/padre_cicero.png" alt="Estátua de Padre Cícero na Colina do Horto, em Juazeiro do Norte">
-                    <figcaption>Estátua de Padre Cícero, na Colina do Horto.</figcaption>
-                </figure>
-                <figure>
+            <div class="religious-dual-column">
+                <div class="religious-text">
+                    <p>O Cariri é movido pela devoção. E é aqui, no Crato, que se encontra o verdadeiro berço da fé nordestina: a cidade é a terra natal do <strong>Padre Cícero Romão Batista</strong>, nascido a 24 de março de 1844, a figura central do misticismo e da religiosidade de todo o Ceará.</p>
+                    <p>Reverenciando essa força espiritual, o Crato inscreveu o seu nome na história do turismo mundial com a inauguração, no final de 2025, da <strong>maior estátua de Nossa Senhora de Fátima do mundo</strong>. Este impressionante monumento de 54 metros de altura atrai milhares de visitantes, oferecendo uma vista panorâmica deslumbrante e consolidando-se como uma paragem obrigatória para os congressistas.</p>
+                </div>
+                <figure class="portrait-card">
                     <img class="expandable-image" src="img/santa.png" alt="Estátua de Nossa Senhora de Fátima no Crato">
                     <figcaption>Monumento de Nossa Senhora de Fátima, no Crato.</figcaption>
                 </figure>
@@ -219,7 +365,7 @@
         <div class="info-card">
             <h2>Turismo Ecológico e Geoparque Araripe</h2>
             <p>Para os amantes da natureza, o Crato é um verdadeiro oásis no semiárido. A cidade é a porta de entrada para a Floresta Nacional do Araripe-Apodi (FLONA) — a primeira floresta nacional criada no Brasil. As suas trilhas verdes exuberantes levam a cascatas refrescantes, como as do Sítio Lameiro e da Batateira.</p>
-            
+
             <div class="badge-destaque">
                 <span>🦕</span>
                 <p>Oásis Paleontológico: A cidade está inserida no território do Geopark Araripe, o primeiro geoparque das Américas reconhecido pela UNESCO. É a sua oportunidade de explorar geossítios de importância mundial, repletos de fósseis que contam a história da Terra há milhões de anos.</p>
@@ -243,6 +389,108 @@
             <h2 style="color: #2e7d32; border-bottom-color: #2e7d32;">Encantos e Tesouros da Região do Cariri</h2>
             <p>A experiência estende-se para além do Crato. A apenas alguns minutos de distância, a região forma um mosaico perfeito de turismo. Na vizinha <strong>Juazeiro do Norte</strong>, poderá subir a majestosa Colina do Horto para visitar a imponente estátua de Padre Cícero e conhecer a verdadeira arte da xilogravura na Lira Nordestina.</p>
             <p>Em <strong>Barbalha</strong>, o Complexo Ambiental Mirante do Caldas surpreende com as suas piscinas de águas termais e o teleférico com vistas privilegiadas da Chapada. Um pouco mais adiante, as charmosas cidades de <strong>Santana do Cariri</strong> e <strong>Nova Olinda</strong> convidam-no a explorar o renomado Museu de Paleontologia, lar de fósseis com mais de 100 milhões de anos, e a encantadora Fundação Casa Grande – Memorial do Homem Kariri. Uma imersão obrigatória na alma do Nordeste!</p>
+
+            <div class="region-showcase">
+                <div class="region-showcase-header">
+                    <h3>Galeria de atrativos do Cariri</h3>
+                    <p>Clique nas imagens para ampliar. O slideshow destaca alguns dos cenários mais marcantes da região.</p>
+                </div>
+
+                <div class="slideshow" id="cariri-slideshow" aria-label="Galeria em slide show com atrativos da região do Cariri">
+                    <figure class="slideshow-slide active">
+                        <img class="expandable-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/PadreCicero1.jpg" alt="Estátua de Padre Cícero na Colina do Horto, em Juazeiro do Norte">
+                        <figcaption>
+                            <strong>Colina do Horto — Juazeiro do Norte</strong>
+                            <span>Vista da estátua de Padre Cícero. Foto em domínio público por Lourenço Torres, via Wikimedia Commons.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://www.vaidepromo.com.br/blog/wp-content/uploads/2024/05/Centro-de-Cultura-Popular-Mestre-Noza.jpg" alt="Artesanato no Centro de Cultura Popular Mestre Noza, em Juazeiro do Norte">
+                        <figcaption>
+                            <strong>Centro de Cultura Popular Mestre Noza — Juazeiro do Norte</strong>
+                            <span>Arte popular e artesanato regional. Imagem indicada pela fonte como Wikimedia Commons / CC0.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://airial.travel/_next/image?q=70&amp;url=https%3A%2F%2Fcoinventmediastorage.blob.core.windows.net%2Fmedia-storage-container%2Fgphoto_ChIJUaVmXHSCoQcR18BBQIxXyL8_1.jpg&amp;w=2048" alt="Peças de xilogravura e cordel associadas à Lira Nordestina">
+                        <figcaption>
+                            <strong>Lira Nordestina — Juazeiro do Norte</strong>
+                            <span>Peças de xilogravura e cordel. Fonte da imagem: Airial Travel, página “Tipografia Lira Nordestina”.</span>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://www.sema.ce.gov.br/wp-content/uploads/sites/36/2023/11/mirante-1-scaled.jpg" alt="Vista panorâmica do Complexo Ambiental Mirante do Caldas, em Barbalha">
+                        <figcaption>
+                            <strong>Complexo Ambiental Mirante do Caldas — Barbalha</strong>
+                            <span>Mirante e paisagem da Chapada do Araripe. Fonte: SEMA/CE.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Cascata%20Balne%C3%A1rio%20do%20Caldas.JPG" alt="Cascata de água natural no Balneário do Caldas, em Barbalha">
+                        <figcaption>
+                            <strong>Cascata do Balneário do Caldas — Barbalha</strong>
+                            <span>Cascata de água natural no Caldas. Foto de Josampaio, via Wikimedia Commons, sob licença CC BY-SA 3.0.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://www.ceara.gov.br/wp-content/uploads/2021/11/211113_TELEFERICO-BARBALHA_NIU1911.jpg" alt="Teleférico do Complexo Ambiental Mirante do Caldas, em Barbalha">
+                        <figcaption>
+                            <strong>Teleférico do Caldas — Barbalha</strong>
+                            <span>Teleférico do Complexo Ambiental Mirante do Caldas. Fonte: Governo do Estado do Ceará.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://www.sema.ce.gov.br/wp-content/uploads/sites/36/2024/07/HelioFilho_MG_6689-600x400.jpg" alt="Área interna do Borboletário do Cariri no Complexo Ambiental Mirante do Caldas">
+                        <figcaption>
+                            <strong>Borboletário do Cariri, Mirante do Caldas — Barbalha</strong>
+                            <span>Espaço de pesquisa, visitação e educação ambiental. Fonte: SEMA/CE.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://www.sema.ce.gov.br/wp-content/uploads/sites/36/2024/07/ac331cbf-5400-43d2-bb59-41d6a4e8d6e9-600x800.jpeg" alt="Borboleta no Borboletário do Cariri">
+                        <figcaption>
+                            <strong>Borboletário do Cariri — Barbalha</strong>
+                            <span>Detalhe da biodiversidade em visita mediada. Fonte: SEMA/CE.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Museu%20de%20Paleontologia.jpg" alt="Fachada do Museu de Paleontologia de Santana do Cariri">
+                        <figcaption>
+                            <strong>Museu de Paleontologia — Santana do Cariri</strong>
+                            <span>Fachada do museu. Foto em domínio público por Emidio Rodrigues, via Wikimedia Commons.</span>
+                        </figcaption>
+                    </figure>
+
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/F%C3%B3sseis%20de%20Peixes.jpg" alt="Fósseis de peixes associados ao patrimônio paleontológico da região do Cariri">
+                        <figcaption>
+                            <strong>Geossítio Parque dos Pterossauros — Santana do Cariri</strong>
+                            <span>Referência ao patrimônio fossilífero da Bacia do Araripe. Foto de fósseis do Museu de Paleontologia, domínio público por Emidio Rodrigues, via Wikimedia Commons.</span>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="slideshow-slide">
+                        <img class="expandable-image" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Funda%C3%A7%C3%A3o%20Casa%20Grande%2C%20Nova%20Olinda%20%28Cear%C3%A1%29.jpg" alt="Fundação Casa Grande em Nova Olinda">
+                        <figcaption>
+                            <strong>Fundação Casa Grande — Nova Olinda</strong>
+                            <span>Memorial do Homem Kariri. Foto de Allan Patrick, via Wikimedia Commons, sob licença CC BY-SA 2.0.</span>
+                        </figcaption>
+                    </figure>
+
+                    <button class="slideshow-btn prev" type="button" aria-label="Slide anterior">&#10094;</button>
+                    <button class="slideshow-btn next" type="button" aria-label="Próximo slide">&#10095;</button>
+                </div>
+
+                <div class="slideshow-dots" aria-label="Seleção de slides"></div>
+            </div>
         </div>
 
         <div class="call-to-action">
@@ -259,6 +507,85 @@
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
+    </script>
+
+    <script>
+        (function () {
+            const slideshow = document.getElementById('cariri-slideshow');
+            if (!slideshow) return;
+
+            const slides = Array.from(slideshow.querySelectorAll('.slideshow-slide'));
+            const dotsContainer = document.querySelector('.slideshow-dots');
+            const prevBtn = slideshow.querySelector('.slideshow-btn.prev');
+            const nextBtn = slideshow.querySelector('.slideshow-btn.next');
+            let currentIndex = 0;
+            let autoplay;
+
+            function goToSlide(index) {
+                currentIndex = (index + slides.length) % slides.length;
+                slides.forEach((slide, slideIndex) => {
+                    slide.classList.toggle('active', slideIndex === currentIndex);
+                });
+                Array.from(dotsContainer.children).forEach((dot, dotIndex) => {
+                    dot.classList.toggle('active', dotIndex === currentIndex);
+                    dot.setAttribute('aria-current', dotIndex === currentIndex ? 'true' : 'false');
+                });
+            }
+
+            function createDots() {
+                slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'slideshow-dot' + (index === 0 ? ' active' : '');
+                    dot.setAttribute('aria-label', 'Ir para o slide ' + (index + 1));
+                    dot.setAttribute('aria-current', index === 0 ? 'true' : 'false');
+                    dot.addEventListener('click', () => {
+                        goToSlide(index);
+                        restartAutoplay();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
+            }
+
+            function nextSlide() {
+                goToSlide(currentIndex + 1);
+            }
+
+            function prevSlide() {
+                goToSlide(currentIndex - 1);
+            }
+
+            function startAutoplay() {
+                autoplay = window.setInterval(nextSlide, 18000);
+            }
+
+            function stopAutoplay() {
+                window.clearInterval(autoplay);
+            }
+
+            function restartAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                restartAutoplay();
+            });
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                restartAutoplay();
+            });
+
+            slideshow.addEventListener('mouseenter', stopAutoplay);
+            slideshow.addEventListener('mouseleave', startAutoplay);
+            slideshow.addEventListener('focusin', stopAutoplay);
+            slideshow.addEventListener('focusout', startAutoplay);
+
+            createDots();
+            goToSlide(0);
+            startAutoplay();
+        })();
     </script>
 
     <script src="js/lightbox.js"></script>
