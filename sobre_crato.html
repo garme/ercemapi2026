@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/lightbox.css">
     <title>Descubra o Crato - XIV ERCEMAPI 2026</title>
     <style>
         :root { 
@@ -70,6 +71,84 @@
             margin-bottom: 2rem;
         }
         .call-to-action h3 { color: var(--highlight); font-size: 1.8rem; margin-bottom: 1rem; }
+
+        .card-image,
+        .card-gallery,
+        .portrait-card {
+            margin: 1.5rem auto 0;
+        }
+        .card-image {
+            max-width: 760px;
+        }
+        .card-image img,
+        .card-gallery img,
+        .portrait-card img {
+            width: 100%;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+            object-fit: cover;
+        }
+        .card-image img {
+            max-height: 380px;
+        }
+        .portrait-card {
+            max-width: 320px;
+        }
+        .portrait-card img {
+            max-height: 400px;
+            object-fit: cover;
+        }
+        .history-dual-column {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 290px;
+            gap: 2rem;
+            align-items: start;
+        }
+        .history-dual-column .portrait-card {
+            margin-top: 0.2rem;
+            max-width: 290px;
+            justify-self: end;
+        }
+        .history-dual-column .portrait-card img {
+            max-height: 360px;
+            object-fit: cover;
+        }
+        .card-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+        .religious-gallery img {
+            height: 430px;
+            object-fit: cover;
+            object-position: center;
+        }
+        .card-image figcaption,
+        .card-gallery figcaption,
+        .portrait-card figcaption {
+            margin-top: 0.55rem;
+            font-size: 0.92rem;
+            color: #666;
+            text-align: center;
+        }
+        @media (max-width: 760px) {
+            .history-dual-column {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .history-dual-column .portrait-card {
+                justify-self: center;
+                max-width: 320px;
+                margin-top: 0.5rem;
+            }
+        }
+        @media (max-width: 640px) {
+            .info-card { padding: 1.6rem; }
+            .card-gallery { grid-template-columns: 1fr; }
+            .religious-gallery img { height: auto; max-height: 430px; }
+            .card-image img { max-height: 320px; }
+        }
     </style>
 </head>
 <body>
@@ -94,7 +173,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -109,14 +188,32 @@
         
         <div class="info-card">
             <h2>História e Vanguarda Republicana</h2>
-            <p>Berço de mentes brilhantes e de espírito revolucionário, o Crato desempenha um papel de vanguarda na história do Brasil. Foi palco de movimentos libertários cruciais, como a Revolução Pernambucana de 1817, imortalizada pela figura heroica de Bárbara de Alencar, a primeira prisioneira política do país.</p>
-            <p>Tamanha era a força desse ideal libertário que, no dia 03 de maio de 1817, o Crato proclamou-se uma república independente, rompendo com a coroa portuguesa e formando um governo provisório incríveis cinco anos antes do histórico grito do Ipiranga. Participar da ERCEMAPI no Crato é respirar essa atmosfera de inovação contínua que une a ousadia secular ao futuro tecnológico.</p>
+            <div class="history-dual-column">
+                <div class="history-text">
+                    <p>Berço de mentes brilhantes e de espírito revolucionário, o Crato desempenha um papel de vanguarda na história do Brasil. Foi palco de movimentos libertários cruciais, como a Revolução Pernambucana de 1817, imortalizada pela figura heroica de Bárbara de Alencar, a primeira prisioneira política do país.</p>
+                    <p>Tamanha era a força desse ideal libertário que, no dia 03 de maio de 1817, o Crato proclamou-se uma república independente, rompendo com a coroa portuguesa e formando um governo provisório incríveis cinco anos antes do histórico grito do Ipiranga. Participar da ERCEMAPI no Crato é respirar essa atmosfera de inovação contínua que une a ousadia secular ao futuro tecnológico.</p>
+                </div>
+                <figure class="portrait-card">
+                    <img class="expandable-image" src="img/barbara_alencar.jpg" alt="Retrato de Bárbara de Alencar">
+                    <figcaption>Bárbara de Alencar. Autor desconhecido. Imagem em domínio público via Wikimedia Commons.</figcaption>
+                </figure>
+            </div>
         </div>
 
         <div class="info-card">
             <h2>O Gigante do Turismo Religioso e Berço da Fé</h2>
             <p>O Cariri é movido pela devoção. E é aqui, no Crato, que se encontra o verdadeiro berço da fé nordestina: a cidade é a terra natal do <strong>Padre Cícero Romão Batista</strong>, nascido a 24 de março de 1844, a figura central do misticismo e da religiosidade de todo o Ceará.</p>
             <p>Reverenciando essa força espiritual, o Crato inscreveu o seu nome na história do turismo mundial com a inauguração, no final de 2025, da <strong>maior estátua de Nossa Senhora de Fátima do mundo</strong>. Este impressionante monumento de 54 metros de altura atrai milhares de visitantes, oferecendo uma vista panorâmica deslumbrante e consolidando-se como uma paragem obrigatória para os congressistas.</p>
+            <div class="card-gallery religious-gallery">
+                <figure>
+                    <img class="expandable-image" src="img/padre_cicero.png" alt="Estátua de Padre Cícero na Colina do Horto, em Juazeiro do Norte">
+                    <figcaption>Estátua de Padre Cícero, na Colina do Horto.</figcaption>
+                </figure>
+                <figure>
+                    <img class="expandable-image" src="img/santa.png" alt="Estátua de Nossa Senhora de Fátima no Crato">
+                    <figcaption>Monumento de Nossa Senhora de Fátima, no Crato.</figcaption>
+                </figure>
+            </div>
         </div>
 
         <div class="info-card">
@@ -127,11 +224,19 @@
                 <span>🦕</span>
                 <p>Oásis Paleontológico: A cidade está inserida no território do Geopark Araripe, o primeiro geoparque das Américas reconhecido pela UNESCO. É a sua oportunidade de explorar geossítios de importância mundial, repletos de fósseis que contam a história da Terra há milhões de anos.</p>
             </div>
+            <figure class="card-image">
+                <img class="expandable-image" src="img/geo_sitio.png" alt="Vista panorâmica de geossítio na Chapada do Araripe">
+                <figcaption>Vista da Chapada do Araripe e dos geossítios da região.</figcaption>
+            </figure>
         </div>
 
         <div class="info-card">
             <h2>Efervescência Cultural</h2>
             <p>O Crato pulsa arte. A cidade é um "caldeirão cultural" onde o autêntico folclore nordestino ganha vida através do Reisado de Couro, das bandas de pífanos e da poesia de cordel. Durante os seus dias de evento, aproveite para visitar o <strong>Centro Cultural do Cariri Sérvulo Esmeraldo</strong>, um dos maiores e mais modernos complexos de arte, ciência e exposições do Brasil.</p>
+            <figure class="card-image">
+                <img class="expandable-image" src="img/centro_cultural.png" alt="Galeria de exposição no Centro Cultural do Cariri Sérvulo Esmeraldo">
+                <figcaption>Centro Cultural do Cariri Sérvulo Esmeraldo.</figcaption>
+            </figure>
         </div>
 
         <div class="info-card" style="border-left-color: #2e7d32;">
@@ -155,6 +260,8 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
     </script>
+
+    <script src="js/lightbox.js"></script>
 
 </body>
 </html>

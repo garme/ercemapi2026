@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/lightbox.css">
     <title>XIV ERCEMAPI 2026 - Ceará, Maranhão e Piauí</title>
     <style>
         :root {
@@ -23,10 +24,10 @@
         nav a:hover { color: var(--highlight); }
         
         /* Secção Destaque (Hero) */
-        .hero { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--accent-color)); color: var(--text-light); padding: 6rem 5%; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
-        .hero h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; color: #ccc; }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; font-weight: bold; }
+        .hero { background: linear-gradient(rgba(26, 26, 46, 0.78), rgba(15, 52, 96, 0.72)), url('img/info.png') center center / cover no-repeat; color: var(--text-light); padding: 8rem 5%; text-align: center; min-height: 520px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 0 3px 12px rgba(0,0,0,0.55); }
+        .hero h2 { font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; color: #f1f1f1; max-width: 980px; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; font-weight: bold; text-shadow: 0 2px 10px rgba(0,0,0,0.55); }
         .btn { background-color: var(--highlight); color: var(--text-light); padding: 0.8rem 2rem; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1rem; transition: background 0.3s; }
         .btn:hover { background-color: #d13d56; }
         
@@ -49,6 +50,34 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             border: 2px solid #ddd;
+        }
+
+        .local-photo {
+            max-width: 760px;
+            margin: 0 auto 2rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            border: 1px solid #ddd;
+            background: #fff;
+        }
+        .local-photo img {
+            width: 100%;
+            max-height: 420px;
+            display: block;
+            object-fit: cover;
+        }
+        .local-photo figcaption {
+            padding: 0.85rem 1rem;
+            font-size: 0.95rem;
+            color: #555;
+            text-align: center;
+            background: #fff;
+        }
+        @media (max-width: 768px) {
+            .hero { padding: 5rem 5%; min-height: 460px; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero h2 { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -76,7 +105,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato" || currentPage === "hospedagem") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -99,6 +128,10 @@
 
     <section id="local">
         <h2 class="section-title">Local do Evento</h2>
+        <figure class="local-photo">
+            <img class="expandable-image" src="img/ifce_vista.png" alt="Vista aérea do IFCE campus Crato, local da XIV ERCEMAPI 2026">
+            <figcaption>IFCE campus Crato, sede da XIV ERCEMAPI 2026.</figcaption>
+        </figure>
         <div style="text-align: center;">
             <h3>Instituto Federal de Educação, Ciência e Tecnologia do Ceará (IFCE)</h3>
             <p style="margin-top: 1rem; color: #555;">Campus Crato - Região do Cariri, Ceará, Brasil</p>
@@ -125,6 +158,8 @@
                 document.getElementById('footer-placeholder').innerHTML = data;
             });
     </script>
+
+    <script src="js/lightbox.js"></script>
 
 </body>
 </html>
