@@ -6,6 +6,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap: 1rem;
         position: sticky;
         top: 0;
         z-index: 1000;
@@ -14,18 +15,33 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    .main-header .logo-container {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
     .main-header .logo-container a {
         display: flex;
         align-items: center;
-        background-color: #ffffff; 
-        padding: 0px 15px;
+        background-color: #ffffff;
+        padding: 0 15px;
         border-radius: 8px;
         text-decoration: none;
         transition: transform 0.3s ease;
+        max-width: 100%;
+        overflow: hidden;
     }
-    .main-header .logo-container img { max-height: 100px; width: auto; object-fit: contain; }
+
+    .main-header .logo-container img {
+        max-height: 100px;
+        max-width: 100%;
+        width: auto;
+        object-fit: contain;
+        display: block;
+    }
 
     /* Navegação */
+    .main-header nav { flex: 0 0 auto; }
     .main-header nav ul { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; align-items: center; }
     .main-header nav a {
         color: #f5f5f5;
@@ -51,19 +67,19 @@
         top: 100%;
         left: 0;
     }
-    
+
     .dropdown-content a {
-    color: #f5f5f5;
-    padding: 12px 20px;
-    padding-left: 15px !important;
-    text-decoration: none;
-    display: block;
-    font-size: 1rem;
-    transition: background 0.3s;
-    box-sizing: border-box;
-    text-align: left;
+        color: #f5f5f5;
+        padding: 12px 20px;
+        padding-left: 15px !important;
+        text-decoration: none;
+        display: block;
+        font-size: 1rem;
+        transition: background 0.3s;
+        box-sizing: border-box;
+        text-align: left;
     }
-    
+
     .dropdown-content a:hover {
         background-color: #0f3460;
         color: #e94560;
@@ -71,16 +87,117 @@
     .dropdown:hover .dropdown-content { display: block; }
 
     /* Menu Mobile */
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; gap: 6px; }
-    .menu-toggle .bar { width: 30px; height: 3px; background-color: #f5f5f5; }
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: 48px;
+        height: 46px;
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 8px;
+        background-color: #0f3460;
+        cursor: pointer;
+        flex: 0 0 auto;
+        z-index: 1002;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    }
+    .menu-toggle:hover,
+    .menu-toggle:focus-visible {
+        background-color: #e94560;
+        outline: none;
+    }
+    .menu-toggle .bar { width: 28px; height: 3px; background-color: #ffffff; border-radius: 2px; }
 
     @media (max-width: 950px) {
+        .main-header {
+            padding: 0.6rem 4%;
+            gap: 0.75rem;
+        }
+
+        .main-header .logo-container {
+            flex: 1 1 auto;
+            max-width: calc(100% - 64px);
+        }
+
+        .main-header .logo-container a {
+            width: fit-content;
+            max-width: min(100%, 320px);
+            padding: 0 10px;
+        }
+
+        .main-header .logo-container img {
+            max-height: 64px;
+        }
+
         .menu-toggle { display: flex; }
-        .main-header nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: #16213e; }
+
+        .main-header nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #16213e;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+        }
         .main-header nav.active { display: block; }
-        .main-header nav ul { flex-direction: column; padding: 1rem 5%; }
-        .dropdown-content { position: static; background: rgba(0,0,0,0.2); border: none; }
-        .dropdown-content a { padding-left: 2.5rem; }
+        .main-header nav ul {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            padding: 0.75rem 5%;
+        }
+        .main-header nav li { width: 100%; }
+        .main-header nav a {
+            display: block;
+            width: 100%;
+            padding: 0.9rem 0.75rem;
+            border-radius: 6px;
+        }
+        .main-header nav a:hover,
+        .main-header nav a.active {
+            background-color: #0f3460;
+            color: #ffffff;
+        }
+        .dropdown-content {
+            position: static;
+            background: rgba(0,0,0,0.22);
+            border: none;
+            box-shadow: none;
+            min-width: 0;
+            width: 100%;
+            margin-top: 0.2rem;
+        }
+        .dropdown-content a { padding-left: 1.5rem !important; }
+    }
+
+    @media (max-width: 420px) {
+        .main-header {
+            padding: 0.5rem 3.5%;
+            gap: 0.55rem;
+        }
+        .main-header .logo-container {
+            max-width: calc(100% - 56px);
+        }
+        .main-header .logo-container a {
+            max-width: 100%;
+            padding: 0 7px;
+            border-radius: 6px;
+        }
+        .main-header .logo-container img {
+            max-height: 52px;
+        }
+        .menu-toggle {
+            width: 44px;
+            height: 42px;
+            gap: 5px;
+        }
+        .menu-toggle .bar {
+            width: 25px;
+        }
     }
 </style>
 
@@ -91,9 +208,9 @@
         </a>
     </div>
     
-    <div class="menu-toggle" onclick="document.getElementById('nav-container').classList.toggle('active')">
+    <button class="menu-toggle" type="button" aria-label="Abrir ou fechar menu" aria-expanded="false" onclick="const nav = document.getElementById('nav-container'); nav.classList.toggle('active'); this.setAttribute('aria-expanded', nav.classList.contains('active'))">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-    </div>
+    </button>
 
     <nav id="nav-container">
         <ul id="nav-links">

@@ -1,58 +1,172 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscrições - XIV ERCEMAPI 2026</title>
     <style>
-        :root { 
-            --primary-color: #1a1a2e; 
-            --secondary-color: #16213e; 
-            --accent-color: #0f3460; 
-            --highlight: #e94560; 
-            --text-light: #f5f5f5; 
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight: #e94560;
+            --text-light: #f5f5f5;
+            --muted-text: #666;
+            --border-color: #e1e5ec;
+            --soft-bg: #f4f7fb;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f9f9f9; color: #333; line-height: 1.6; min-height: 100vh; display: flex; flex-direction: column; }
-        
-        .page-header { 
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); 
-            color: white; 
-            text-align: center; 
-            padding: 4rem 2rem; 
+
+        .page-header {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
             border-bottom: 5px solid var(--highlight);
         }
         .page-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .page-header p { font-size: 1.1rem; color: #ccc; font-weight: 300; }
-        
-        .container { max-width: 900px; margin: auto; padding: 4rem 2rem; flex: 1; display: flex; justify-content: center; align-items: center; }
-        
-        .coming-soon-box { 
-            background: white; 
-            padding: 3.5rem 2.5rem; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
-            text-align: center;
-            border-top: 4px solid var(--highlight);
-            max-width: 600px;
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem 1rem;
+            flex: 1;
         }
-        
-        .coming-soon-box .icon {
-            font-size: 4rem;
-            color: var(--highlight);
-            margin-bottom: 1.5rem;
+
+        .info-box,
+        .registration-box,
+        .payment-box {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
         }
-        
-        .coming-soon-box h2 { 
-            color: var(--primary-color); 
-            font-size: 2rem;
+
+        .info-box {
+            border-left: 5px solid var(--highlight);
+            padding: 2rem;
+        }
+        .info-box h2,
+        .payment-box h2,
+        .registration-box h2 {
+            color: var(--primary-color);
             margin-bottom: 1rem;
+            font-size: 1.55rem;
         }
-        
-        .coming-soon-box p { 
-            color: #666; 
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+        .info-box p,
+        .payment-box p {
+            color: #444;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .info-box p:last-child,
+        .payment-box p:last-child { margin-bottom: 0; }
+
+        .payment-box {
+            padding: 2rem;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .btn-registration {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.85rem 1.4rem;
+            background: var(--highlight);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .btn-registration:hover {
+            background: #d13d56;
+            transform: translateY(-2px);
+        }
+
+        a {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+        a:hover { color: var(--highlight); }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.9rem;
+            margin: 2.5rem 0 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--highlight);
+            display: inline-block;
+        }
+
+        .registration-box {
+            border-top: 4px solid var(--accent-color);
+        }
+        .registration-box h2 {
+            padding: 1.5rem 1.5rem 0;
+            margin-bottom: 0.5rem;
+        }
+        .table-note {
+            padding: 0 1.5rem 1rem;
+            color: var(--muted-text);
+            font-size: 0.95rem;
+        }
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            padding: 0 1.5rem 1.5rem;
+        }
+        table {
+            width: 100%;
+            min-width: 720px;
+            border-collapse: collapse;
+            background: white;
+        }
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 0.85rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+        }
+        td.value,
+        th.value {
+            text-align: center;
+            white-space: nowrap;
+            font-weight: 700;
+        }
+        tbody tr:nth-child(even) { background: var(--soft-bg); }
+        tbody tr:hover { background: #fff4f6; }
+
+        .final-note {
+            background: #fff3cd;
+            border-left: 5px solid #f0ad4e;
+            color: #6b4e00;
+            padding: 1.3rem 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .page-header { padding: 3rem 1.5rem; }
+            .page-header h1 { font-size: 2rem; }
+            .container { padding: 2rem 1rem 1rem; }
+            .info-box,
+            .payment-box { padding: 1.5rem; }
+            .registration-box h2 { padding: 1.3rem 1rem 0; }
+            .table-note { padding: 0 1rem 1rem; }
+            .table-wrapper { padding: 0 1rem 1.2rem; }
+            table { min-width: 680px; }
+            th, td { padding: 0.75rem; }
         }
     </style>
 </head>
@@ -78,7 +192,7 @@
                 if (currentPage === "artigos" || currentPage === "minicursos") {
                     document.getElementById('menu-chamadas').classList.add('active');
                 }
-                if (currentPage === "comissao" || currentPage === "a_ercemapi") {
+                if (currentPage === "comissao" || currentPage === "a_ercemapi" || currentPage === "sobre_crato") {
                     document.getElementById('menu-informacoes').classList.add('active');
                 }
             });
@@ -86,17 +200,204 @@
 
     <div class="page-header">
         <h1>Inscrições</h1>
-        <p>Garanta a sua participação na XIV ERCEMAPI 2026</p>
+        <p>Valores, prazos e política de cancelamento da XIV ERCEMAPI 2026</p>
     </div>
 
-    <div class="container">
-        <div class="coming-soon-box">
-            <div class="icon">🎟️</div>
-            <h2>Em Breve!</h2>
-            <p>O sistema de inscrições está a ser configurado e estará disponível em breve através da plataforma oficial <strong>ECOS da SBC</strong>.</p>
-            <p style="font-size: 0.95rem; color: #999;">Haverá valores diferenciados e lotes promocionais para estudantes de nível médio, graduação, pós-graduação e profissionais da área.</p>
+    <main class="container">
+        <section class="info-box">
+            <h2>Informação importante sobre as inscrições</h2>
+            <p>Até o dia <strong>12/10/2026</strong> — prazo superior a 15 dias e inferior a 30 dias antes da data de início do evento — pode-se fazer uma devolução de <strong>50% do valor pago</strong> pela inscrição na ERCEMAPI 2026. Após esta data, não haverá devolução de qualquer valor pago.</p>
+            <p>A política se aplica tanto para o cancelamento da inscrição quanto para o cancelamento de qualquer atividade adicional. Para solicitar o cancelamento, enviar a solicitação para <a href="mailto:faturamento@sbc.org.br">faturamento@sbc.org.br</a>.</p>
+            <p><strong>Política para participantes que utilizarem a isenção institucional:</strong> consulte as orientações disponíveis no site da SBC em <a href="https://www.sbc.org.br/associe-se/#beneficios" target="_blank" rel="noopener noreferrer">benefícios da associação institucional</a>.</p>
+        </section>
+
+        <section class="payment-box">
+            <h2>Formas de pagamento e prazo de inscrição</h2>
+            <p>Os pagamentos por <strong>boleto</strong> e <strong>débito</strong> encerram-se no dia <strong>09/11/2026</strong>. Os pagamentos por <strong>cartão de crédito</strong>, <strong>PIX</strong>, <strong>nota de empenho</strong> e <strong>faturamento</strong> ficarão abertos até o último dia do evento.</p>
+            <p>As inscrições podem ser feitas pelo sistema ECOS da SBC:</p>
+            <a class="btn-registration" href="https://centraldesistemas.sbc.org.br/ecos/ercemapi2026" target="_blank" rel="noopener noreferrer">Acessar inscrições no ECOS</a>
+        </section>
+
+        <h2 class="section-title">Tabelas de Inscrição</h2>
+
+        <section class="registration-box">
+            <h2>Estudante — Educação Básica e Graduação</h2>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th class="value">Até 23/10/2026</th>
+                            <th class="value">Até 13/11/2026</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estudante de Ensino Médio ou Técnico</td>
+                            <td class="value">R$ 30,00</td>
+                            <td class="value">R$ 40,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante associado à SBC com anuidade vigente</td>
+                            <td class="value">R$ 30,00</td>
+                            <td class="value">R$ 40,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante associado à SBC com anuidade vencendo em até 90 dias (COMBO: inscrição no evento + renovação da associação à SBC)</td>
+                            <td class="value">R$ 65,00</td>
+                            <td class="value">R$ 75,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante não associado ou com associação não vigente à SBC (COMBO: inscrição no evento + associação à SBC)</td>
+                            <td class="value">R$ 65,00</td>
+                            <td class="value">R$ 75,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante não associado à SBC (Somente inscrição no evento)</td>
+                            <td class="value">R$ 68,00</td>
+                            <td class="value">R$ 79,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="registration-box">
+            <h2>Estudante — Pós-Graduação</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th class="value">Até 23/10/2026</th>
+                            <th class="value">Até 13/11/2026</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estudante de pós-graduação associado à SBC com anuidade vigente</td>
+                            <td class="value">R$ 50,00</td>
+                            <td class="value">R$ 60,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante de pós-graduação associado à SBC com anuidade vencendo em até 90 dias (COMBO: inscrição no evento + renovação da associação à SBC)</td>
+                            <td class="value">R$ 192,00</td>
+                            <td class="value">R$ 202,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante de pós-graduação não associado ou com associação não vigente à SBC (COMBO: inscrição no evento + associação à SBC)</td>
+                            <td class="value">R$ 192,00</td>
+                            <td class="value">R$ 202,00</td>
+                        </tr>
+                        <tr>
+                            <td>Estudante de pós-graduação não associado à SBC (Somente inscrição no evento)</td>
+                            <td class="value">R$ 197,00</td>
+                            <td class="value">R$ 208,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="registration-box">
+            <h2>Professor</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th class="value">Até 23/10/2026</th>
+                            <th class="value">Até 13/11/2026</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Professor de Educação Básica Municipal/Estadual associado à SBC com anuidade vigente</td>
+                            <td class="value">R$ 60,00</td>
+                            <td class="value">R$ 70,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Municipal/Estadual associado à SBC com anuidade vencendo em até 90 dias (COMBO: inscrição no evento + renovação da associação à SBC)</td>
+                            <td class="value">R$ 202,00</td>
+                            <td class="value">R$ 212,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Municipal/Estadual não associado ou com associação não vigente à SBC (COMBO: inscrição no evento + associação à SBC)</td>
+                            <td class="value">R$ 202,00</td>
+                            <td class="value">R$ 212,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Municipal/Estadual não associado à SBC (Somente inscrição no evento)</td>
+                            <td class="value">R$ 208,00</td>
+                            <td class="value">R$ 219,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Federal associado à SBC com anuidade vigente</td>
+                            <td class="value">R$ 70,00</td>
+                            <td class="value">R$ 80,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Federal associado à SBC com anuidade vencendo em até 90 dias (COMBO: inscrição no evento + renovação da associação à SBC)</td>
+                            <td class="value">R$ 458,00</td>
+                            <td class="value">R$ 468,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Federal não associado ou com associação não vigente à SBC (COMBO: inscrição no evento + associação à SBC)</td>
+                            <td class="value">R$ 458,00</td>
+                            <td class="value">R$ 468,00</td>
+                        </tr>
+                        <tr>
+                            <td>Professor de Educação Básica Federal não associado à SBC (Somente inscrição no evento)</td>
+                            <td class="value">R$ 465,00</td>
+                            <td class="value">R$ 476,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="registration-box">
+            <h2>Profissional</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th class="value">Até 23/10/2026</th>
+                            <th class="value">Até 13/11/2026</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Profissional associado à SBC com anuidade vigente</td>
+                            <td class="value">R$ 80,00</td>
+                            <td class="value">R$ 90,00</td>
+                        </tr>
+                        <tr>
+                            <td>Profissional associado à SBC com anuidade vencendo em até 90 dias (COMBO: inscrição no evento + renovação da associação à SBC)</td>
+                            <td class="value">R$ 474,00</td>
+                            <td class="value">R$ 484,00</td>
+                        </tr>
+                        <tr>
+                            <td>Profissional não associado ou com associação não vigente à SBC (COMBO: inscrição no evento + associação à SBC)</td>
+                            <td class="value">R$ 474,00</td>
+                            <td class="value">R$ 484,00</td>
+                        </tr>
+                        <tr>
+                            <td>Profissional não associado à SBC (Somente inscrição no evento)</td>
+                            <td class="value">R$ 482,00</td>
+                            <td class="value">R$ 493,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="final-note">
+            <strong>Observação:</strong> os valores de COMBO consideram inscrição no evento somada à associação/renovação da SBC.
         </div>
-    </div>
+    </main>
 
     <div id="footer-placeholder"></div>
     <script>
